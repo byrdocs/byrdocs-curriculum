@@ -1,0 +1,13 @@
+name = "byrdocs-curriculum"
+main = "src/index.ts"
+compatibility_date = "2026-03-10"
+upload_source_maps = true
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[[r2_buckets]]
+bucket_name = "byrdocs-curriculum"
+binding = "R2"
+remote = true
