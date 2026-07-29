@@ -8,8 +8,8 @@ Base URL: `https://curriculum.byrdocs.com`
 
 ### List all curricula
 
-```bash
-curl https://curriculum.byrdocs.com/
+```
+https://curriculum.byrdocs.com/
 ```
 
 Returns `curriculum.json` — an array of a bunch of entries with `id`, `title`, `school`, `year`, and `major[]`.
