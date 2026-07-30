@@ -1,0 +1,167 @@
+curricula:
+- id: 08a3cce729ab303b325c69c42b548499
+  title: 计算机学院（国家示范性软件学院）2025级本科专业培养方案
+  school: 计算机学院（国家示范性软件学院）
+  year: '2025'
+  major:
+  - type: 本科
+    name: 计算机科学与技术
+  - type: 本科
+    name: 网络工程
+  - type: 本科
+    name: 数据科学与大数据技术
+  - type: 本科
+    name: 软件工程
+  - type: 本科（特殊培养）
+    name: 计算机科学与技术+会计学联合学士学位
+  - type: 本科
+    name: 计算机科学与技术（留学生）
+- id: 2c90445f2d5da0f1382b1376369a8d56
+  title: 人工智能学院2025级本科专业培养方案
+  school: 人工智能学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 信息工程
+  - type: 本科
+    name: 人工智能
+  - type: 本科
+    name: 人工智能+金融科技
+- id: 2ddd24554a2539c3d372804603e7d8ab
+  title: 未来学院2023级培养方案
+  school: 未来学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 通信工程
+  - type: 本科
+    name: 计算机科学与技术
+  - type: 本科
+    name: 电子科学与技术
+  - type: 本科
+    name: 网络空间安全
+- id: 30848f43b300d2301acd3f775b59d686
+  title: 网络空间安全学院2025级本科专业培养方案
+  school: 网络空间安全学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 信息安全
+  - type: 本科
+    name: 网络空间安全
+  - type: 本科
+    name: 密码科学与技术
+  - type: 本科
+    name: 网络空间安全（实验班）
+  - type: 本科（特殊培养）
+    name: 网络空间安全（第二学士学位）
+- id: 3a11e4120846744d557774e8901f46df
+  title: 集成电路学院2024级本科专业培养方案
+  school: 集成电路学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 集成电路设计与集成系统
+- id: 6e262dd1e81068f08c831ab6db5e9524
+  title: 智能工程与自动化学院2024级本科专业培养方案
+  school: 智能工程与自动化学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 自动化
+  - type: 本科
+    name: 机器人工程
+  - type: 本科
+    name: 邮政工程（智慧物流）
+  - type: 本科
+    name: 机械工程（数字智能）
+- id: 7939b0c70b2aa3cc6d9883e8e15303e5
+  title: 信息与通信工程学院2024级本科专业培养方案
+  school: 信息与通信工程学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 通信工程
+  - type: 本科
+    name: 电子信息工程
+  - type: 本科
+    name: 空间信息与数字技术
+  - type: 本科
+    name: 信息与通信工程学科“英才班”
+  - type: 本科（特殊培养）
+    name: 通信工程专业双培班（5G通信技术方向）
+  - type: 本科（特殊培养）
+    name: 电子信息工程专业双培班（大数据信息处理方向）
+  - type: 本科（特殊培养）
+    name: 通信工程（第二学士学位）
+- id: 9603fe7bf86154836304aa8eaee3cd28
+  title: 经济管理学院2025级本科专业培养方案
+  school: 经济管理学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 大数据管理与应用（数智科学实验班）
+  - type: 本科（特殊培养）
+    name: “人工智能+大数据管理与应用”双学士学位复合型人才项目
+  - type: 本科（特殊培养）
+    name: 金融科技（与对外经贸大学会计联合学位）
+  - type: 本科
+    name: 电子商务（数智商务实验班）
+  - type: 本科
+    name: 工商管理（数智管理实验班）
+  - type: 本科
+    name: 公共事业管理（数智治理实验班）
+  - type: 本科（特殊培养）
+    name: 信息管理与信息系统（第二学士学位）
+- id: dbcd44d05dfa2db6e298371ea04d281c
+  title: 电子工程学院2025级本科专业培养方案
+  school: 电子工程学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 电子科学与技术
+  - type: 本科
+    name: 电子信息科学与技术
+  - type: 本科
+    name: 光电信息科学与工程
+- id: dbde5ffbf2218cc7768fdb6c9b7101aa
+  title: 国际学院2025级本科专业培养方案
+  school: 国际学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 电信工程及管理
+  - type: 本科
+    name: 物联网工程
+  - type: 本科
+    name: 电子信息工程
+  - type: 本科
+    name: 智能科学与技术
+- id: e2df4289e9ff405ef2ec3ceaed7d41fc
+  title: 人文学院2023级本科专业培养方案
+  school: 人文学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 英语
+  - type: 本科
+    name: 法学
+  - type: 本科
+    name: 汉语言
+  - type: 本科（特殊培养）
+    name: 法学（第二学士学位）
+  - type: 预科
+    name: 预科一年制
+- id: ea164b44af7894b02a5cedcf7fa4a4ce
+  title: 数字媒体与设计艺术学院2023级本科专业培养方案
+  school: 数字媒体与设计艺术学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 数字媒体技术
+  - type: 本科
+    name: 智能交互设计
+  - type: 本科
+    name: 数字媒体艺术
+  - type: 本科
+    name: 网络与新媒体

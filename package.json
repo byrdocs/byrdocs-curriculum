@@ -3,15 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
+    "build": "node scripts/build.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "dev": "npm run build && wrangler dev",
+    "start": "npm run build && wrangler dev",
     "test": "vitest",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.12.4",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.1.2",
+    "js-yaml": "^5.2.2",
     "typescript": "^5.5.2",
     "vitest": "~3.2.0",
     "wrangler": "^4.115.0"

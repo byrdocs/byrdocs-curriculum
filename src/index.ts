@@ -1,12 +1,12 @@
+import curricula from './curricula.json';
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const url = new URL(request.url);
 		const path = url.pathname;
 
 		if (path === '/') {
-			const obj = await env.R2.get('curriculum.json');
-			if (!obj) return new Response('Not Found', { status: 404 });
-			return new Response(obj.body, {
+			return new Response(JSON.stringify(curricula), {
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',

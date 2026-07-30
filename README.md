@@ -12,7 +12,7 @@ Base URL: `https://curriculum.byrdocs.com`
 https://curriculum.byrdocs.com/
 ```
 
-Returns `curriculum.json` — an array of a bunch of entries with `id`, `title`, `school`, `year`, and `major[]`.
+Returns a JSON array of curriculum entries with `id`, `title`, `school`, `year`, and `major[]`.
 
 ### Download a PDF
 

@@ -2,28 +2,27 @@
 
 This project is a Cloudflare Worker that serves course curriculum metadata and PDF files from a Cloudflare R2 bucket.
 
-## R2 Bucket
+## Data Source
 
-Both metadata and PDFs are stored in the R2 bucket `byrdocs-curriculum`:
+Editable source for curriculum metadata is `curricula.yaml` in the repo root. At build time, `scripts/build.mjs` converts it to `src/curricula.json` (the top-level `curricula` key is unwrapped into a flat array), which is bundled into the Worker.
 
-- `curriculum.json` — metadata for all curriculum files
+PDFs are stored in the R2 bucket `byrdocs-curriculum`:
+
 - `{id}.pdf` — each PDF is named by its MD5 hash
 
 Worker binding: `env.R2` -> `byrdocs-curriculum` (remote).
 
-## curriculum.json Schema
+## curricula.yaml Schema
 
-```ts
-Array<{
-	id: string;                // MD5 hex digest, matches {id}.pdf in R2
-	title: string;             // e.g. "计算机学院（国家示范性软件学院）2025级本科专业培养方案"
-	school: string;
-	year: string;
-	major: Array<{
-		type: "本科" | "本科（特殊培养）" | "预科" | "硕士研究生" | "博士研究生";
-		name: string;
-	}>;
-}>
+```yaml
+curricula:
+  - id: string              # MD5 hex digest, matches {id}.pdf in R2
+    title: string           # e.g. "计算机学院（国家示范性软件学院）2025级本科专业培养方案"
+    school: string
+    year: string
+    major:
+      - type: "本科" | "本科（特殊培养）" | "预科" | "硕士研究生" | "博士研究生"
+        name: string
 ```
 
 Currently 12 entries (~2023-2025, various BUPT schools). No search/pagination is needed — the dataset is small.
@@ -32,7 +31,7 @@ Currently 12 entries (~2023-2025, various BUPT schools). No search/pagination is
 
 ### `GET /`
 
-Returns the full `curriculum.json` from R2 as JSON.
+Returns the full curricula array as JSON (bundled at build time, not fetched from R2).
 - `Content-Type: application/json`
 - `Access-Control-Allow-Origin: *`
 - `Cache-Control: public, max-age=3600`
@@ -48,16 +47,18 @@ Unmatched paths and missing files return `404`.
 
 ## Current Implementation
 
+- `curricula.yaml` — Editable YAML source for curriculum metadata
+- `scripts/build.mjs` — Converts `curricula.yaml` to `src/curricula.json` (run before dev/deploy)
 - `src/index.ts` — Worker entry point with the two endpoints above
+- `src/curricula.json` — Generated JSON, bundled into the Worker at build time
 - `wrangler.toml` — Worker config with R2 binding
-- `test/index.spec.ts` — Unit + integration tests (Vitest, `@cloudflare/vitest-pool-workers`)
-- `curriculum.json` — Local copy of the metadata for reference/test fixtures
 
 ## Dev Commands
 
 ```
-npm run dev       # wrangler dev (local dev server)
-npm run deploy    # wrangler deploy
-npm test          # vitest
-npm run cf-typegen  # wrangler types (regenerate Env from wrangler.toml)
+npm run build        # Generate src/curricula.json from curricula.yaml
+npm run dev          # npm run build && wrangler dev (local dev server)
+npm run deploy       # npm run build && wrangler deploy
+npm test             # vitest
+npm run cf-typegen   # wrangler types (regenerate Env from wrangler.toml)
 ```
