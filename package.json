@@ -1,9 +1,9 @@
 {
-  "name": "aged-violet-765a",
+  "name": "byrdocs-curriculum",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node --experimental-strip-types scripts/build.mts",
     "deploy": "npm run build && wrangler deploy",
     "dev": "npm run build && wrangler dev",
     "start": "npm run build && wrangler dev",
@@ -11,6 +11,7 @@
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1097.0",
     "@cloudflare/vitest-pool-workers": "^0.12.4",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.1.2",
