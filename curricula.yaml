@@ -130,11 +130,11 @@ curricula:
   year: '2023'
   major:
   - type: 本科
-  name: 电子科学与技术
+    name: 电子科学与技术
   - type: 本科
-  name: 电子信息科学与技术
+    name: 电子信息科学与技术
   - type: 本科
-  name: 光电信息科学与工程
+    name: 光电信息科学与工程
 - id: dbde5ffbf2218cc7768fdb6c9b7101aa
   title: 国际学院2025级本科专业培养方案
   school: 国际学院
