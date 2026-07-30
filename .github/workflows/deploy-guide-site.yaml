@@ -1,0 +1,17 @@
+name: Deploy guide site
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - curricula.yaml
+
+jobs:
+  deploy:
+    name: Trigger Cloudflare Pages deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger deploy hook
+        run: curl --fail --request POST "${{ secrets.GUIDE_SITE_DEPLOY_HOOK }}"
