@@ -16,6 +16,21 @@ curricula:
     name: 计算机科学与技术+会计学联合学士学位
   - type: 本科
     name: 计算机科学与技术（留学生）
+- id: b17eb1a607a2bed5cafc7fc6a788027a
+  title: 计算机学院（国家示范性软件学院）2023级本科专业培养方案
+  school: 计算机学院（国家示范性软件学院）
+  year: '2023'
+  major:
+  - type: 本科
+    name: 计算机科学与技术
+  - type: 本科
+    name: 网络工程
+  - type: 本科
+    name: 数据科学与大数据技术
+  - type: 本科
+    name: 软件工程
+  - type: 本科
+    name: 计算机科学与技术（留学生）
 - id: 2c90445f2d5da0f1382b1376369a8d56
   title: 人工智能学院2025级本科专业培养方案
   school: 人工智能学院
@@ -124,6 +139,17 @@ curricula:
     name: 电子信息科学与技术
   - type: 本科
     name: 光电信息科学与工程
+- id: 6a9727d7b3f3cb77d128fe43aaa41740
+  title: 电子工程学院2024级本科专业培养方案
+  school: 电子工程学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 电子科学与技术
+  - type: 本科
+    name: 电子信息科学与技术
+  - type: 本科
+    name: 光电信息科学与工程
 - id: 2c01395d4d8e66571e1e9bd53d022f0c
   title: 电子工程学院2023级本科专业培养方案
   school: 电子工程学院
@@ -139,6 +165,19 @@ curricula:
   title: 国际学院2025级本科专业培养方案
   school: 国际学院
   year: '2025'
+  major:
+  - type: 本科
+    name: 电信工程及管理
+  - type: 本科
+    name: 物联网工程
+  - type: 本科
+    name: 电子信息工程
+  - type: 本科
+    name: 智能科学与技术
+- id: 7efb432ba18f60f99b09daa9f6033116
+  title: 国际学院2024级本科专业培养方案
+  school: 国际学院
+  year: '2024'
   major:
   - type: 本科
     name: 电信工程及管理
