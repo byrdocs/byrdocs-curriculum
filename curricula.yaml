@@ -295,3 +295,18 @@ curricula:
     name: 数字媒体艺术
   - type: 本科
     name: 网络与新媒体
+- id: d04261657e4ccd32aff775f35ffa004e
+  title: 数学科学学院2025级本科专业培养方案
+  school: 数学科学学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 数学与应用数学
+  - type: 本科
+    name: 信息与计算科学
+  - type: 本科
+    name: 数学与应用数学（留学生）
+  - type: 本科
+    name: 信息与计算科学（留学生）
+  - type: 本科（特殊培养）
+    name: 信息与计算科学+通信工程双学士学位
