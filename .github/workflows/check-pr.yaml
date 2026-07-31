@@ -15,3 +15,6 @@ jobs:
           node-version: '22'
       - run: npm i
       - run: npm run build
+        env:
+          CURRICULUM_FILE_URL: ${{ secrets.CURRICULUM_FILE_URL }}
+          CURRICULUM_SITE_URL: ${{ secrets.CURRICULUM_SITE_URL }}
