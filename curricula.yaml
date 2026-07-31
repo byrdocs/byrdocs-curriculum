@@ -42,6 +42,30 @@ curricula:
     name: 人工智能
   - type: 本科
     name: 人工智能+金融科技
+- id: a88d2c8eb0d672fc50a3858aef2fc0a2
+  title: 人工智能学院2024级本科专业培养方案
+  school: 人工智能学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 信息工程
+  - type: 本科
+    name: 人工智能
+  - type: 本科
+    name: 智能医学工程
+- id: e307714eb41d3975ece979b43a1bd8ac
+  title: 人工智能学院2023级本科专业培养方案
+  school: 人工智能学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 信息工程
+  - type: 本科
+    name: 人工智能
+  - type: 本科
+    name: 自动化
+  - type: 本科
+    name: 智能医学工程
 - id: 2ddd24554a2539c3d372804603e7d8ab
   title: 未来学院2023级培养方案
   school: 未来学院
