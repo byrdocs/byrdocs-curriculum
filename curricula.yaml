@@ -131,6 +131,13 @@ curricula:
   major:
   - type: 本科
     name: 集成电路设计与集成系统
+- id: dbc3f447bd04ecf8dee38de69e44e731
+  title: 集成电路学院2023级本科专业培养方案
+  school: 集成电路学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 集成电路设计与集成系统
 - id: 6e262dd1e81068f08c831ab6db5e9524
   title: 智能工程与自动化学院2024级本科专业培养方案
   school: 智能工程与自动化学院
