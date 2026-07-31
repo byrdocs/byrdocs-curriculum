@@ -52,6 +52,11 @@ Unmatched paths and missing files return `404`.
 - `src/index.ts` — Worker entry point with the two endpoints above. Proxies PDF requests to `CURRICULUM_FILE_URL`.
 - `src/curricula.json` — Generated JSON, bundled into the Worker at build time
 - `wrangler.toml` — Worker config with R2 binding and env vars (`CURRICULUM_FILE_URL`, `CURRICULUM_URL`)
+- `.github/workflows/check-pr.yaml` — CI workflow that validates PRs touching `curricula.yaml`
+
+## CI / PR Workflow
+
+`.github/workflows/check-pr.yaml` uses `pull_request_target` so R2 secrets are available, then explicitly checks out the PR's code. For security, the `npm run build` step (which needs R2 credentials to verify PDF existence) is **skipped if any file other than `curricula.yaml` was modified in the PR**. This prevents untrusted code in `scripts/build.mts` from running with secret access. A workflow warning is emitted listing the extra files — manual review is required before merging.
 
 ## Dev Commands
 
