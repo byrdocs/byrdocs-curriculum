@@ -70,6 +70,36 @@ curricula:
     name: 网络空间安全（实验班）
   - type: 本科（特殊培养）
     name: 网络空间安全（第二学士学位）
+- id: 535fcfc615140bfaa133134aebf042e1
+  title: 网络空间安全学院2024级本科专业培养方案
+  school: 网络空间安全学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 信息安全
+  - type: 本科
+    name: 网络空间安全
+  - type: 本科
+    name: 密码科学与技术
+  - type: 本科
+    name: 网络空间安全（实验班）
+  - type: 本科（特殊培养）
+    name: 网络空间安全（第二学士学位）
+- id: 0c2158cc46352252815878687ddb5d55
+  title: 网络空间安全学院2023级本科专业培养方案
+  school: 网络空间安全学院
+  year: '2023'
+  major:
+  - type: 本科
+    name: 信息安全
+  - type: 本科
+    name: 网络空间安全
+  - type: 本科
+    name: 密码科学与技术
+  - type: 本科
+    name: 网络空间安全（实验班）
+  - type: 本科（特殊培养）
+    name: 网络空间安全（第二学士学位）
 - id: 3a11e4120846744d557774e8901f46df
   title: 集成电路学院2024级本科专业培养方案
   school: 集成电路学院
