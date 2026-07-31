@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - curricula.yaml
 
 jobs:
   deploy:
