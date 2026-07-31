@@ -1,6 +1,6 @@
 name: Check PR
 on:
-  pull_request_target:
+  pull_request:
     paths:
       - curricula.yaml
     branches:
@@ -10,30 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.sha }}
-          allow-unsafe-pr-checkout: true
-          fetch-depth: 0
-      - name: Detect untrusted changes
-        id: scripts-check
-        run: |
-          git fetch origin "${{ github.base_ref }}"
-          FILES=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")
-          EXTRA=$(echo "$FILES" | sed '/^curricula\.yaml$/d' | sed '/^$/d')
-          if [ -n "$EXTRA" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::warning::Files other than curricula.yaml modified: $EXTRA — skipping R2 verification, manual review required"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm i
-      - if: steps.scripts-check.outputs.skip != 'true'
-        run: npm run build
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      - run: npm run build

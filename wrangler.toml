@@ -8,8 +8,8 @@ compatibility_flags = ["nodejs_compat"]
 enabled = true
 
 [vars]
+CURRICULUM_SITE_URL = "https://curriculum.byrdocs.org"
 CURRICULUM_FILE_URL = "https://attach.curriculum.byrdocs.org"
-CURRICULUM_URL = "https://curriculum.byrdocs.org"
 
 [[r2_buckets]]
 bucket_name = "byrdocs-curriculum"

@@ -1,65 +1,50 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { load } from 'js-yaml';
-import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+
+const skipValidation = process.argv.includes('--skip-validation');
 
 const raw = readFileSync('curricula.yaml', 'utf8');
 const data = load(raw);
 const entries = data.curricula;
 
-const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
-const accessKey = process.env.R2_ACCESS_KEY_ID;
-const secretKey = process.env.R2_SECRET_ACCESS_KEY;
+if (!skipValidation) {
+	const curriculumUrl = process.env.CURRICULUM_SITE_URL;
 
-if (!accountId || !accessKey || !secretKey) {
-	console.error('R2 credentials (CLOUDFLARE_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY) not set.');
-	process.exit(1);
-}
-
-console.log(`Checking ${entries.length} PDFs in R2 bucket...`);
-
-const s3 = new S3Client({
-	region: 'auto',
-	endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
-	credentials: { accessKeyId: accessKey, secretAccessKey: secretKey },
-});
-
-let r2Keys = new Set<string>();
-let token: string | undefined;
-do {
-	const res = await s3.send(new ListObjectsV2Command({
-		Bucket: 'byrdocs-curriculum',
-		ContinuationToken: token,
-	}));
-	for (const obj of res.Contents ?? []) {
-		if (obj.Key) r2Keys.add(obj.Key);
+	console.log(`Fetching R2 keys from ${curriculumUrl}/ls-bucket...`);
+	const response = await fetch(`${curriculumUrl}/ls-bucket`);
+	if (!response.ok) {
+		console.error(`Failed to fetch /ls-bucket: ${response.status} ${response.statusText}`);
+		process.exit(1);
 	}
-	token = res.NextContinuationToken;
-} while (token);
+	const r2Keys = await response.json() as string[];
 
-const results = entries.map((entry) => {
-	const key = `${entry.id}.pdf`;
-	return { key, entry, ok: r2Keys.has(key) };
-});
+	console.log(`Checking ${entries.length} PDFs...`);
 
-for (const r of results) {
-	if (r.ok) {
-		console.log(`  \x1b[32m✓\x1b[0m ${r.key}`);
-	} else {
-		console.error(`  \x1b[31m✗\x1b[0m ${r.key} — MISSING from R2`);
+	const results = entries.map((entry) => {
+		const key = `${entry.id}.pdf`;
+		return { key, entry, ok: r2Keys.includes(key) };
+	});
+
+	for (const r of results) {
+		if (r.ok) {
+			console.log(`  \x1b[32m✓\x1b[0m ${r.key}`);
+		} else {
+			console.error(`  \x1b[31m✗\x1b[0m ${r.key} — MISSING from R2`);
+		}
 	}
-}
 
-const missing = results.filter((r) => !r.ok).map((r) => r.entry);
+	const missing = results.filter((r) => !r.ok).map((r) => r.entry);
 
-if (missing.length > 0) {
-	console.error(`\nBuild failed: ${missing.length} PDF(s) missing from R2:`);
-	for (const entry of missing) {
-		console.error(`  - ${entry.id}.pdf ${entry.title}`);
+	if (missing.length > 0) {
+		console.error(`\nBuild failed: ${missing.length} PDF(s) missing from R2:`);
+		for (const entry of missing) {
+			console.error(`  - ${entry.id}.pdf ${entry.title}`);
+		}
+		process.exit(1);
 	}
-	process.exit(1);
-}
 
-console.log('All PDFs verified.');
+	console.log('All PDFs verified.');
+}
 
 console.log('Generating src/curricula.json...');
 writeFileSync('src/curricula.json', JSON.stringify(entries));

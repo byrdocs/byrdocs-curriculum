@@ -5,6 +5,24 @@ export default {
 		const url = new URL(request.url);
 		const path = url.pathname;
 
+		if (path === '/ls-bucket') {
+			const keys: string[] = [];
+			let cursor: string | undefined;
+			do {
+				const listed = await env.R2.list({ cursor });
+				for (const obj of listed.objects) {
+					keys.push(obj.key);
+				}
+				cursor = listed.cursor;
+			} while (cursor);
+			return new Response(JSON.stringify(keys), {
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+				},
+			});
+		}
+
 		if (path === '/') {
 			return new Response(JSON.stringify(curricula), {
 				headers: {
