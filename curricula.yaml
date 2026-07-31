@@ -1,21 +1,4 @@
 curricula:
-- id: 08a3cce729ab303b325c69c42b548499
-  title: 计算机学院（国家示范性软件学院）2025级本科专业培养方案
-  school: 计算机学院（国家示范性软件学院）
-  year: '2025'
-  major:
-  - type: 本科
-    name: 计算机科学与技术
-  - type: 本科
-    name: 网络工程
-  - type: 本科
-    name: 数据科学与大数据技术
-  - type: 本科
-    name: 软件工程
-  - type: 本科（特殊培养）
-    name: 计算机科学与技术+会计学联合学士学位
-  - type: 本科
-    name: 计算机科学与技术（留学生）
 - id: b17eb1a607a2bed5cafc7fc6a788027a
   title: 计算机学院（国家示范性软件学院）2023级本科专业培养方案
   school: 计算机学院（国家示范性软件学院）
