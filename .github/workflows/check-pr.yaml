@@ -16,5 +16,5 @@ jobs:
       - run: npm i
       - run: npm run build
         env:
-          CURRICULUM_FILE_URL: ${{ secrets.CURRICULUM_FILE_URL }}
-          CURRICULUM_SITE_URL: ${{ secrets.CURRICULUM_SITE_URL }}
+          CURRICULUM_FILE_URL: ${{ vars.CURRICULUM_FILE_URL }}
+          CURRICULUM_SITE_URL: ${{ vars.CURRICULUM_SITE_URL }}
