@@ -15,25 +15,30 @@ export default {
 			});
 		}
 
-		const id = path.slice(1);
+		if (!path.startsWith('/file/')) {
+			return new Response('Not Found', { status: 404 });
+		}
+
+		const id = path.slice('/file/'.length);
 		if (!id || id.includes('/')) {
 			return new Response('Not Found', { status: 404 });
 		}
 
-		const key = `${id}.pdf`;
-		const obj = await env.R2.get(key);
-		if (!obj) return new Response('Not Found', { status: 404 });
+		const fileUrl = `${env.CURRICULUM_FILE_URL}/${id}.pdf`;
+		const response = await fetch(fileUrl);
+		if (!response.ok) {
+			return new Response('Not Found', { status: 404 });
+		}
 
 		const headers = new Headers();
-		obj.writeHttpMetadata(headers);
 		headers.set('Content-Type', 'application/pdf');
 		headers.set('Access-Control-Allow-Origin', '*');
 
 		const title = url.searchParams.get('title');
 		if (title) {
-			headers.set('Content-Disposition', `attachment; filename*=UTF-8''${encodeURIComponent(title)}.pdf`);
+			headers.set('Content-Disposition', `attachment; filename*=UTF-8''${encodeURIComponent(title)}`);
 		}
 
-		return new Response(obj.body, { headers });
+		return new Response(response.body, { headers });
 	},
 } satisfies ExportedHandler<Env>;

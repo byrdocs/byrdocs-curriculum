@@ -36,9 +36,9 @@ Returns the full curricula array as JSON (bundled at build time, not fetched fro
 - `Access-Control-Allow-Origin: *`
 - `Cache-Control: public, max-age=3600`
 
-### `GET /:id`
+### `GET /file/:id`
 
-Downloads the PDF matching `{id}.pdf` from R2.
+Downloads the PDF matching `{id}.pdf` from the R2 public domain (`CURRICULUM_FILE_URL`).
 - `Content-Type: application/pdf`
 - `Access-Control-Allow-Origin: *`
 - Optional `?title=name` query param sets `Content-Disposition: attachment; filename*=UTF-8''{name}.pdf` so the browser downloads with a custom filename instead of the raw MD5 hash.
@@ -49,9 +49,9 @@ Unmatched paths and missing files return `404`.
 
 - `curricula.yaml` — Editable YAML source for curriculum metadata
 - `scripts/build.mjs` — Converts `curricula.yaml` to `src/curricula.json` (run before dev/deploy)
-- `src/index.ts` — Worker entry point with the two endpoints above
+- `src/index.ts` — Worker entry point with the two endpoints above. Proxies PDF requests to `CURRICULUM_FILE_URL`.
 - `src/curricula.json` — Generated JSON, bundled into the Worker at build time
-- `wrangler.toml` — Worker config with R2 binding
+- `wrangler.toml` — Worker config with R2 binding and env vars (`CURRICULUM_FILE_URL`, `CURRICULUM_URL`)
 
 ## Dev Commands
 
