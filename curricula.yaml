@@ -147,6 +147,13 @@ curricula:
     name: 网络空间安全（实验班）
   - type: 本科（特殊培养）
     name: 网络空间安全（第二学士学位）
+- id: c72d683ec72996819f8ece346bf113f0
+  title: 集成电路学院2025级本科专业培养方案
+  school: 集成电路学院
+  year: '2025'
+  major:
+  - type: 本科
+    name: 集成电路设计与集成系统
 - id: 3a11e4120846744d557774e8901f46df
   title: 集成电路学院2024级本科专业培养方案
   school: 集成电路学院
