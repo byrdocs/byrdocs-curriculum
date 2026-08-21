@@ -309,6 +309,13 @@ curricula:
     name: 电子信息工程
   - type: 本科
     name: 智能科学与技术
+- id: d52593dd8d7697637355255762decd1a
+  title: 人文学院2024级本科专业培养方案
+  school: 人文学院
+  year: '2024'
+  major:
+  - type: 本科
+    name: 英语（语言智能实验班）
 - id: e2df4289e9ff405ef2ec3ceaed7d41fc
   title: 人文学院2023级本科专业培养方案
   school: 人文学院
