@@ -1,0 +1,50 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: curricula.yaml
+description: Schema for the Byrdocs curriculum metadata file
+type: object
+required:
+  - curricula
+additionalProperties: false
+properties:
+  curricula:
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - title
+        - school
+        - year
+        - major
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          description: MD5 hex digest, matches {id}.pdf in R2
+          pattern: ^[0-9a-f]{32}$
+        title:
+          type: string
+        school:
+          type: string
+        year:
+          type: string
+        major:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - type
+              - name
+            additionalProperties: false
+            properties:
+              type:
+                type: string
+                enum:
+                  - 本科
+                  - 本科（特殊培养）
+                  - 预科
+                  - 硕士研究生
+                  - 博士研究生
+              name:
+                type: string

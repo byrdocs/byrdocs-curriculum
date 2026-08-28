@@ -1,4 +1,5 @@
 import curricula from './curricula.json';
+import schema from './schema.yaml';
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
@@ -19,6 +20,16 @@ export default {
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
+				},
+			});
+		}
+
+		if (path === '/schema.yaml') {
+			return new Response(schema, {
+				headers: {
+					'Content-Type': 'application/yaml',
+					'Access-Control-Allow-Origin': '*',
+					'Cache-Control': 'public, max-age=3600',
 				},
 			});
 		}

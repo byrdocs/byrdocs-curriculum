@@ -4,6 +4,10 @@ compatibility_date = "2026-03-10"
 upload_source_maps = true
 compatibility_flags = ["nodejs_compat"]
 
+[[rules]]
+type = "Text"
+globs = ["src/schema.yaml"]
+
 [observability]
 enabled = true
 

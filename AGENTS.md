@@ -27,12 +27,21 @@ curricula:
 
 Currently 12 entries (~2023-2025, various BUPT schools). No search/pagination is needed — the dataset is small.
 
+A JSON Schema (in YAML form) lives at `src/schema.yaml` in the repo root and is served by the Worker at `GET /schema.yaml`. `curricula.yaml` references it via a `# yaml-language-server: $schema=...` modeline comment for editor validation. The schema is bundled into the Worker as a text module (see `[[rules]]` in `wrangler.toml` and `src/yaml.d.ts`).
+
 ## API
 
 ### `GET /`
 
 Returns the full curricula array as JSON (bundled at build time, not fetched from R2).
 - `Content-Type: application/json`
+- `Access-Control-Allow-Origin: *`
+- `Cache-Control: public, max-age=3600`
+
+### `GET /schema.yaml`
+
+Returns the JSON Schema (as YAML) for `curricula.yaml`, bundled into the Worker at build time from `schema.yaml`.
+- `Content-Type: application/yaml`
 - `Access-Control-Allow-Origin: *`
 - `Cache-Control: public, max-age=3600`
 
@@ -55,7 +64,9 @@ Unmatched paths and missing files return `404`.
 
 - `curricula.yaml` — Editable YAML source for curriculum metadata
 - `scripts/build.mts` — Converts `curricula.yaml` to `src/curricula.json` and validates PDFs exist in R2 (via `GET /ls-bucket` on the deployed Worker). Use `--skip-validation` to bypass the R2 check (for initial deployment).
-- `src/index.ts` — Worker entry point with three endpoints: `GET /`, `GET /ls-bucket`, `GET /file/:id`. Proxies PDF requests to `CURRICULUM_FILE_URL`.
+- `src/schema.yaml` — JSON Schema (YAML form) for `curricula.yaml`, served at `GET /schema.yaml` and referenced by a modeline in `curricula.yaml`
+- `src/index.ts` — Worker entry point with four endpoints: `GET /`, `GET /schema.yaml`, `GET /ls-bucket`, `GET /file/:id`. Proxies PDF requests to `CURRICULUM_FILE_URL`.
+- `src/yaml.d.ts` — Type declaration for `*.yaml` text-module imports (bundled via `[[rules]]` in `wrangler.toml`)
 - `src/curricula.json` — Generated JSON, bundled into the Worker at build time
 - `wrangler.toml` — Worker config with R2 binding and env vars (`CURRICULUM_FILE_URL`, `CURRICULUM_SITE_URL`)
 - `.github/workflows/check-pr.yaml` — CI workflow that validates PRs touching `curricula.yaml`
